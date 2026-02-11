@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Kaviya ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg,#ff4d6d,#ffb3c1,#ffe5ec);
+      overflow:hidden;
+      transition: 0.5s;
+      overflow-x:hidden;
+overflow-y:auto;
+
+    }
+
+    body.yes-mode{
+      animation: bgPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse{
+      0%{ filter: brightness(1); }
+      50%{ filter: brightness(1.12); }
+      100%{ filter: brightness(1); }
+    }
+
+    .card{
+      width:92%;
+      max-width:480px;
+      padding:30px 25px;
+      text-align:center;
+      border-radius:28px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      position:relative;
+      z-index:5;
+      animation: pop 0.9s ease;
+      transition:0.4s;
+      overflow: hidden;
+    }
+
+    @keyframes pop{
+      from{transform:scale(0.7);opacity:0;}
+      to{transform:scale(1);opacity:1;}
+    }
+
+    .card.yes-bounce{
+      animation: yesBounce 0.9s ease;
+    }
+
+    @keyframes yesBounce{
+      0%{ transform: scale(1); }
+      35%{ transform: scale(1.06); }
+      65%{ transform: scale(0.98); }
+      100%{ transform: scale(1); }
+    }
+
+    h1{
+      font-size:28px;
+      color:#fff;
+      text-shadow:0 3px 10px rgba(0,0,0,0.25);
+      margin-bottom:10px;
+      margin-top: 20px;
+    }
+
+    .name{
+      font-weight:900;
+      font-size:26px;
+    }
+
+    h2{
+      font-size:20px;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    p{
+      color:#fff;
+      font-size:15px;
+      line-height:1.6;
+      margin-bottom:18px;
+    }
+
+    .btns{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    button{
+      padding:12px 22px;
+      border:none;
+      border-radius:14px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      transition:0.25s;
+      min-width:130px;
+    }
+
+    .yes{
+      background:#ff1744;
+      color:#fff;
+      box-shadow:0 10px 20px rgba(0,200,83,0.35);
+    }
+
+    .yes:hover{
+      transform:scale(1.05);
+    }
+
+    .no{
+      background:#ff1744;
+      color:#fff;
+      box-shadow:0 10px 20px rgba(255,23,68,0.35);
+      position:relative;
+    }
+
+    /* POP animation */
+    @keyframes popMsg {
+      0% { transform: scale(0.6); opacity: 0; }
+      60% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* TOP small alert message */
+    .alertBox{
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      color:#0b0000;
+      font-size:15px;
+      line-height:1.4;
+      display:none;
+      z-index: 9999;
+    }
+
+    /* BOTTOM big message */
+    .bigMessage{
+      margin-top: 18px;
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      color:#0b0000;
+     display:none;
+      font-family: "Playfair Display", serif;
+
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 900;
+    }
+
+    .footer{
+      margin-top:14px;
+      font-size:13px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Floating hearts */
+    .heart{
+      position: fixed;
+      font-size: 18px;
+      pointer-events: none;
+      animation: floatUp 3.2s linear forwards;
+      z-index: 99999;
+      opacity: 0.95;
+    }
+
+    @keyframes floatUp{
+      0%{ transform: translateY(0) scale(1); opacity: 0; }
+      10%{ opacity: 1; }
+      100%{ transform: translateY(-110vh) scale(1.6); opacity: 0; }
+    }
+
+    /* Confetti */
+    .confetti{
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 99999;
+      animation: confettiFall 1.6s ease-out forwards;
+    }
+
+    @keyframes confettiFall{
+      0%{ transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100%{ transform: translateY(90vh) rotate(720deg); opacity: 0; }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+
+    <!-- TOP alert box -->
+    <div class="alertBox" id="alertBox"></div>
+
+    <h1>Hey <span class="name">Kaviya</span> ❤️</h1>
+    <h2>I have something special to ask...</h2>
+
+    <p>
+      From the moment you came into my life, everything started feeling more beautiful.
+      Your smile is my favorite place, and your name is my favorite sound.
+      <br><br>
+      So today, I want to say it clearly...
+    </p>
+
+    <h2>Will you be My first priority ?!</h2>
+
+    <div class="btns">
+      <button class="yes" id="yesBtn">YES 😍</button>
+      <button class="no" id="noBtn">NO 😅</button>
+    </div>
+
+    <!-- BOTTOM big message -->
+    <div class="bigMessage" id="bigMessage"></div>
+
+    <div class="footer">Made with ❤️ only for Kaviya</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const alertBox = document.getElementById("alertBox");
+    const bigMessage = document.getElementById("bigMessage");
+    const card = document.getElementById("card");
+
+    let noCount = 0;
+    let alertTimeout;
+
+    function popAlert(text) {
+      alertBox.style.display = "block";
+      alertBox.innerHTML = text;
+
+      alertBox.style.animation = "none";
+      alertBox.offsetHeight;
+      alertBox.style.animation = "popMsg 0.55s ease";
+    }
+
+    function showTempAlert(text) {
+      clearTimeout(alertTimeout);
+      popAlert(text);
+
+      // disappear time (CHANGE THIS NUMBER)
+      alertTimeout = setTimeout(() => {
+        alertBox.style.display = "none";
+        alertBox.innerHTML = "";
+      }, 3000);
+    }
+
+    function showBigMessage(text) {
+      bigMessage.style.display = "block";
+      bigMessage.innerHTML = text;
+
+      bigMessage.style.animation = "none";
+      bigMessage.offsetHeight;
+      bigMessage.style.animation = "popMsg 0.6s ease";
+    }
+
+    // Floating hearts effect
+    function createHearts() {
+      const hearts = ["❤️","💖","💗","💕","💘"];
+      const interval = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-10px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3200);
+      }, 220);
+
+      setTimeout(() => clearInterval(interval), 3500);
+    }
+
+    // Confetti burst
+    function confettiBurst() {
+      for (let i = 0; i < 30; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.top = "-10px";
+
+        const colors = ["#ff1744", "#ffffff", "#ffb3c1", "#ffe5ec", "#ff4d6d"];
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 1600);
+      }
+    }
+
+    // NO button logic
+    noBtn.addEventListener("click", function () {
+      noCount++;
+
+      // 1st and 2nd click -> move away + temp alert
+      if (noCount <= 2) {
+        const x = Math.random() * 260 - 130;
+        const y = Math.random() * 200 - 100;
+        noBtn.style.transform = "translate(" + x + "px, " + y + "px)";
+
+        if (noCount === 1) {
+          showTempAlert("Do I get a chance to be yours, or is it a no?");
+        }
+
+        if (noCount === 2) {
+          showTempAlert("Its ok,i respect ur decision choose ur final decision");
+        }
+      }
+
+      // 3rd click -> disappear + big message (DOWN)
+      if (noCount === 3) {
+        noBtn.style.display = "none";
+        alertBox.style.display = "none"; // hide top alert if showing
+
+        showBigMessage("I searched for u i dreamed of you before i ever found you and i loved you without having you, without holding you my happiness was missing your name that why i waited so i would never let u go.not now not ever. I think about you every day loving you wasn't a choice it happened the moment i saw you and it hasn't stopped not even after everything. No matter what happens don't become stranger to Me ❤‍🩹");
+      }
+    });
+
+    // YES button logic
+    yesBtn.addEventListener("click", function () {
+      alertBox.style.display = "none"; // hide top alert if showing
+
+      showBigMessage("I want to grow old with you from holding your hand to calling you mine. I want to text you good morning until the mornings are next to you. Until your face is the first thing I see, and I don't need my phone to tell you what happened today anymore. I want to carry your phone when you don't have pockets and Your lip gloss , the small things that matters because they are yours And God knows I want you because you make me weak. When you walk into the room in that deadly, gorgeous eyes.I need you like I need air. Like my body knows you are home before my mind catches up.And that's what I love you really means 💗");
+
+      // glow effect
+      card.style.boxShadow =
+        "0 0 35px rgba(255,255,255,0.55), 0 0 90px rgba(255,20,147,0.35)";
+
+      // background pulse
+      document.body.classList.add("yes-mode");
+
+      // card bounce
+      card.classList.remove("yes-bounce");
+      card.offsetHeight;
+      card.classList.add("yes-bounce");
+
+      // hearts + confetti
+      createHearts();
+      confettiBurst();
+
+      // disable buttons after YES
+     yesBtn.disabled = true;
+
+
+
+      yesBtn.style.opacity = "0.7";
+      noBtn.style.opacity = "0.7";
+      yesBtn.style.cursor = "not-allowed";
+      noBtn.style.cursor = "not-allowed";
+    });
+  </script>
+
+</body>
+</html>
